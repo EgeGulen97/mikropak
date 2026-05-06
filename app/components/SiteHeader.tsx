@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import ActiveNavLink from "./ActiveNavLink";
 
 export default function SiteHeader() {
   const mobileMenuRef = useRef<HTMLDetailsElement | null>(null);
+  const [isMobileMachinesOpen, setIsMobileMachinesOpen] = useState(false);
 
   useEffect(() => {
     const details = mobileMenuRef.current;
@@ -26,6 +27,7 @@ export default function SiteHeader() {
 
   const closeMobileMenu = () => {
     mobileMenuRef.current?.removeAttribute("open");
+    setIsMobileMachinesOpen(false);
   };
 
   return (
@@ -155,67 +157,88 @@ export default function SiteHeader() {
                 >
                   Ana Sayfa
                 </Link>
-                <details className="group/details rounded-xl">
-                  <summary className="list-none cursor-pointer rounded-xl px-3 py-2 hover:bg-slate-50">
-                    <span className="inline-flex items-center gap-1">
+                <div className="rounded-xl">
+                  <div className="flex items-center justify-between rounded-xl hover:bg-slate-50">
+                    <Link
+                      className="flex-1 rounded-xl px-3 py-2"
+                      href="/makine-ve-cozumler"
+                      onClick={closeMobileMenu}
+                    >
                       Makine ve Üretim Çözümleri
-                      <span className="text-[11px] text-slate-400 transition group-open/details:rotate-180">
+                    </Link>
+                    <button
+                      type="button"
+                      aria-label="Makine ve Üretim Çözümleri alt menüsünü aç/kapat"
+                      aria-expanded={isMobileMachinesOpen}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        setIsMobileMachinesOpen((v) => !v);
+                      }}
+                      className="mr-1 inline-flex h-9 w-9 items-center justify-center rounded-xl text-slate-500 transition hover:bg-slate-100 hover:text-slate-700"
+                    >
+                      <span
+                        className={`text-[11px] transition ${isMobileMachinesOpen ? "rotate-180" : ""}`}
+                      >
                         ▾
                       </span>
-                    </span>
-                  </summary>
-                  <div className="ml-2 mt-1 border-l border-slate-200 pl-2">
-                    <Link
-                      className="block rounded-xl px-3 py-2 hover:bg-slate-50"
-                      href="/makine-ve-cozumler/oluklu-mukavva-hatlari/xinguang"
-                      onClick={closeMobileMenu}
-                    >
-                      Oluklu Mukavva Hatları
-                    </Link>
-                    <Link
-                      className="block rounded-xl px-3 py-2 hover:bg-slate-50"
-                      href="/makine-ve-cozumler/pre-print-flexo"
-                      onClick={closeMobileMenu}
-                    >
-                      Pre-Print Flexo Baskı Makineleri
-                    </Link>
-                    <Link
-                      className="block rounded-xl px-3 py-2 hover:bg-slate-50"
-                      href="/makine-ve-cozumler/inline-flexo"
-                      onClick={closeMobileMenu}
-                    >
-                      Inline Flexo Baskı Makineleri
-                    </Link>
-                    <Link
-                      className="block rounded-xl px-3 py-2 hover:bg-slate-50"
-                      href="/makine-ve-cozumler/dijital-baski"
-                      onClick={closeMobileMenu}
-                    >
-                      Dijital Baskı Sistemleri
-                    </Link>
-                    <Link
-                      className="block rounded-xl px-3 py-2 hover:bg-slate-50"
-                      href="/makine-ve-cozumler/kalip-kesim"
-                      onClick={closeMobileMenu}
-                    >
-                      Kalıp Kesim Makineleri
-                    </Link>
-                    <Link
-                      className="block rounded-xl px-3 py-2 hover:bg-slate-50"
-                      href="/makine-ve-cozumler/etiketleme-ve-otomasyon"
-                      onClick={closeMobileMenu}
-                    >
-                      Etiketleme ve Otomasyon Sistemleri
-                    </Link>
-                    <Link
-                      className="block rounded-xl px-3 py-2 hover:bg-slate-50"
-                      href="/makine-ve-cozumler/yedek-parca-ve-hat-bilesenleri"
-                      onClick={closeMobileMenu}
-                    >
-                      Yedek Parça ve Hat Bileşenleri
-                    </Link>
+                    </button>
                   </div>
-                </details>
+
+                  {isMobileMachinesOpen ? (
+                    <div className="ml-2 mt-1 border-l border-slate-200 pl-2">
+                      <Link
+                        className="block rounded-xl px-3 py-2 hover:bg-slate-50"
+                        href="/makine-ve-cozumler/oluklu-mukavva-hatlari/xinguang"
+                        onClick={closeMobileMenu}
+                      >
+                        Oluklu Mukavva Hatları
+                      </Link>
+                      <Link
+                        className="block rounded-xl px-3 py-2 hover:bg-slate-50"
+                        href="/makine-ve-cozumler/pre-print-flexo"
+                        onClick={closeMobileMenu}
+                      >
+                        Pre-Print Flexo Baskı Makineleri
+                      </Link>
+                      <Link
+                        className="block rounded-xl px-3 py-2 hover:bg-slate-50"
+                        href="/makine-ve-cozumler/inline-flexo"
+                        onClick={closeMobileMenu}
+                      >
+                        Inline Flexo Baskı Makineleri
+                      </Link>
+                      <Link
+                        className="block rounded-xl px-3 py-2 hover:bg-slate-50"
+                        href="/makine-ve-cozumler/dijital-baski"
+                        onClick={closeMobileMenu}
+                      >
+                        Dijital Baskı Sistemleri
+                      </Link>
+                      <Link
+                        className="block rounded-xl px-3 py-2 hover:bg-slate-50"
+                        href="/makine-ve-cozumler/kalip-kesim"
+                        onClick={closeMobileMenu}
+                      >
+                        Kalıp Kesim Makineleri
+                      </Link>
+                      <Link
+                        className="block rounded-xl px-3 py-2 hover:bg-slate-50"
+                        href="/makine-ve-cozumler/etiketleme-ve-otomasyon"
+                        onClick={closeMobileMenu}
+                      >
+                        Etiketleme ve Otomasyon Sistemleri
+                      </Link>
+                      <Link
+                        className="block rounded-xl px-3 py-2 hover:bg-slate-50"
+                        href="/makine-ve-cozumler/yedek-parca-ve-hat-bilesenleri"
+                        onClick={closeMobileMenu}
+                      >
+                        Yedek Parça ve Hat Bileşenleri
+                      </Link>
+                    </div>
+                  ) : null}
+                </div>
                 <ActiveNavLink
                   href="/ureticiler"
                   className="rounded-xl px-3 py-2 hover:bg-slate-50"
