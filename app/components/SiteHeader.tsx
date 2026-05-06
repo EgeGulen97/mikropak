@@ -239,20 +239,20 @@ export default function SiteHeader() {
                     </div>
                   ) : null}
                 </div>
-                <ActiveNavLink
+                <Link
                   href="/ureticiler"
                   className="rounded-xl px-3 py-2 hover:bg-slate-50"
-                  activeClassName="bg-slate-50 text-slate-900"
+                  onClick={closeMobileMenu}
                 >
                   Üreticiler
-                </ActiveNavLink>
-                <ActiveNavLink
+                </Link>
+                <Link
                   href="/hakkimizda"
                   className="rounded-xl px-3 py-2 hover:bg-slate-50"
-                  activeClassName="bg-slate-50 text-slate-900"
+                  onClick={closeMobileMenu}
                 >
                   Hakkımızda
-                </ActiveNavLink>
+                </Link>
                 <Link
                   className="rounded-xl px-3 py-2 hover:bg-slate-50"
                   href="/#contact"
