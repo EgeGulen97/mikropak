@@ -36,6 +36,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# local python venv (used for icon generation)
+.venv/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
