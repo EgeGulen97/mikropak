@@ -19,6 +19,16 @@ export const brandProfiles: BrandProfile[] = [
     specialization: "Oluklu mukavva hatları ve entegre üretim altyapıları",
   },
   {
+    name: "Fengming",
+    slug: "fengming",
+    logo: "/images/logos/fengming-logo.png",
+    shortDescription:
+      "Flexo pre-print ve bobinden bobine baskı sistemlerinde yüksek hassasiyetli endüstriyel çözümler sunar.",
+    description:
+      "Fengming, flexo pre-print ve bobinden bobine baskı uygulamalarında hız, register hassasiyeti ve üretim stabilitesi odağında endüstriyel sistemler geliştirir.",
+    specialization: "Flexo pre-print ve bobinden bobine baskı sistemleri",
+  },
+  {
     name: "Yongcheng",
     slug: "yongcheng",
     logo: "/images/logos/yongcheng.png",
