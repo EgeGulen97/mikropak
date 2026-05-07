@@ -23,9 +23,9 @@ export const homeContent = {
       description: "Oluklu mukavva ve ambalaj makinelerinde sektör deneyimi",
     },
     installedLines: {
-      label: "Kurulu Hat",
-      value: "50+ hat",
-      description: "Türkiye genelinde aktif üretim sistemleri",
+      label: "Kurulu Sistem",
+      value: "50+ sistem",
+      description: "Türkiye genelinde aktif çözümler",
     },
     brands: {
       label: "Global Marka",
